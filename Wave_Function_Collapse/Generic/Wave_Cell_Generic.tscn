@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmip03wq525y3"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Cell.gd" id="1_jjmix"]
+[ext_resource type="Resource" uid="uid://cmp4bkxmqul3i" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Grass.tres" id="2_5ktya"]
+[ext_resource type="Resource" uid="uid://ce4228dm6apls" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Tree.tres" id="3_hmraf"]
+[ext_resource type="Resource" uid="uid://df6p8g4sjhi71" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Forest.tres" id="4_u25fk"]
+[ext_resource type="Resource" uid="uid://bmykxag264w1q" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Sand.tres" id="5_els0i"]
+[ext_resource type="Resource" uid="uid://dwos1erlj8hga" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Water.tres" id="6_y8w2i"]
+
+[node name="Wave_Cell_Generic" type="Node2D"]
+script = ExtResource("1_jjmix")
+possible_tiles_resources = Array[Resource]([ExtResource("2_5ktya"), ExtResource("3_hmraf"), ExtResource("4_u25fk"), ExtResource("5_els0i"), ExtResource("6_y8w2i")])

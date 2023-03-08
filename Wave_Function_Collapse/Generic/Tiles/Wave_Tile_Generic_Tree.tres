@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://ce4228dm6apls"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_dmgpj"]
+
+[resource]
+script = ExtResource("1_dmgpj")
+tile_name = "tree"
+weight = 10
+source_id = 1
+valid_neighbors = Array[String](["tree", "grass", "forest"])
