@@ -9,4 +9,4 @@
 
 [node name="Wave_Cell_Generic" type="Node2D"]
 script = ExtResource("1_jjmix")
-possible_tiles_resources = Array[Resource]([ExtResource("2_5ktya"), ExtResource("3_hmraf"), ExtResource("4_u25fk"), ExtResource("5_els0i"), ExtResource("6_y8w2i")])
+possible_tiles_resources = Array[Resource("res://Scripts/Wave_Function_Collapse/Wave_Tile.gd")]([ExtResource("2_5ktya"), ExtResource("3_hmraf"), ExtResource("4_u25fk"), ExtResource("5_els0i"), ExtResource("6_y8w2i")])

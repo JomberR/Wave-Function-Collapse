@@ -8,26 +8,38 @@ class_name Wave_Function_Collapse
 @export var wave_cell: PackedScene
 
 @export var placement_delay: float = .01
+@export var tiles_to_place: int = 1
 
 var _wave_cells: Array = []
 var _delay: float
+var _is_generating: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#_populate_random_tilemap()
-	_populate_cells(wave_cell)
-#	while _wave_cells.size() > 0:
-#		_collapse_cell()
+#	_populate_cells(wave_cell)
+#	_collapse_random_cell()
 	_delay = placement_delay
+	
+func generate_map():
+	tileMap.clear()
+	_wave_cells.clear()
+	
+	_populate_cells(wave_cell)
+	_collapse_random_cell()
+	_is_generating = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_delay -= delta
 
 	if(_delay <= 0):
-		_delay = placement_delay;
-		if(_wave_cells.size() > 0):
-			_collapse_cell()
+		_delay = placement_delay
+		
+		if(_is_generating):
+			for i in tiles_to_place:
+				_collapse_cell()
+			if(_wave_cells.size() <= 0):
+				_is_generating = false
 
 func _populate_random_tilemap():
 	for x in width:

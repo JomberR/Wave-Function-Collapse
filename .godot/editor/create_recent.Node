@@ -1,2 +1,7 @@
+Button
+MarginContainer
+Control
+CanvasLayer
+Camera2D
 Wave_Tile
 Wave_Function_Collapse

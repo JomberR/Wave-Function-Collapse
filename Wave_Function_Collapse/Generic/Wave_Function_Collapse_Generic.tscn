@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqa0txoerra4d"]
 
-[ext_resource type="PackedScene" path="res://TileMaps/TileMap_Generic.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bijg8rjxwbs60" path="res://TileMaps/TileMap_Generic.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Function_Collapse.gd" id="1_rpvpg"]
 [ext_resource type="PackedScene" uid="uid://cmip03wq525y3" path="res://Wave_Function_Collapse/Generic/Wave_Cell_Generic.tscn" id="2_0q6vn"]
 
@@ -10,6 +10,5 @@ tileMap = NodePath("TileMap_Generic")
 wave_cell = ExtResource("2_0q6vn")
 
 [node name="TileMap_Generic" parent="." instance=ExtResource("1")]
-format = 2
 
 [node name="Wave_Cell_Generic" parent="." instance=ExtResource("2_0q6vn")]

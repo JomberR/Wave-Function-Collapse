@@ -36,13 +36,13 @@ func update_superposition(updated_cell_location: Vector2i, cell_superposition):
 
 #Remember a POSITIVE y value is DOWN
 func _is_adjacent(foreign_location: Vector2i) -> bool:
-	var north_west = location + Vector2i(-1, -1)
+	#var north_west = location + Vector2i(-1, -1)
 	var north = location + Vector2i(0, -1)
-	var north_east = location + Vector2i(1, -1)
+	#var north_east = location + Vector2i(1, -1)
 	var east = location + Vector2i(1, 0)
-	var south_east = location + Vector2i(1, 1)
+	#var south_east = location + Vector2i(1, 1)
 	var south = location + Vector2i(0, 1)
-	var south_west = location + Vector2i(-1, 1)
+	#var south_west = location + Vector2i(-1, 1)
 	var west = location + Vector2i(-1, 0)
 	
 #	match foreign_location:
