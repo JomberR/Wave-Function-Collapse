@@ -11,7 +11,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer_Generate" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -20,9 +20,23 @@ offset_top = -112.0
 offset_right = 400.0
 grow_vertical = 0
 
-[node name="Button" type="Button" parent="Control/MarginContainer"]
+[node name="Button_Generate" type="Button" parent="Control/MarginContainer_Generate"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Generate!"
 
-[connection signal="pressed" from="Control/MarginContainer/Button" to="." method="_on_generate_pressed"]
+[node name="MarginContainer_Exit" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button_Exit" type="Button" parent="Control/MarginContainer_Exit"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="Control/MarginContainer_Generate/Button_Generate" to="." method="_on_generate_pressed"]
+[connection signal="pressed" from="Control/MarginContainer_Exit/Button_Exit" to="." method="_on_exit_pressed"]

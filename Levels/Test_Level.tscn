@@ -6,9 +6,8 @@
 [node name="Test_Level" type="Node2D"]
 
 [node name="Wave_Function_Collapse_Generic" parent="." instance=ExtResource("1_t4lt5")]
-position = Vector2(3, 10)
-height = 32
-width = 58
+height = 33
+width = 59
 tiles_to_place = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]

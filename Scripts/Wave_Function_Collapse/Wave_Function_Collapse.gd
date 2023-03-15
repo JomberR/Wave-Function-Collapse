@@ -1,3 +1,5 @@
+#The overall manager. Responsible for populating the tilemap with cells, and calling them.
+#It is also responsible for managing tile resources within the cells.
 extends Node2D
 class_name Wave_Function_Collapse
 
@@ -10,7 +12,7 @@ class_name Wave_Function_Collapse
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
 
-var _wave_cells: Array = []
+var _wave_cells: Array = [Wave_Cell]
 var _delay: float
 var _is_generating: bool = false
 
@@ -41,21 +43,6 @@ func _process(delta):
 			if(_wave_cells.size() <= 0):
 				_is_generating = false
 
-func _populate_random_tilemap():
-	for x in width:
-		for y in height:
-			_place_random_tile(Vector2i(x, y), tileMap.tile_set)
-
-func _place_random_tile(tile_position: Vector2i, tileset: TileSet):
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	
-	var tileset_size = tileset.get_source_count()
-	var random_tile = random.randi_range(0, tileset_size - 1)
-	
-	#layer, coordinates, source, atlas_coords
-	tileMap.set_cell(0, tile_position, random_tile, Vector2i(0,0))
-
 func _populate_cells(cell):
 	for x in width:
 		for y in height:
@@ -71,8 +58,7 @@ func _collapse_cell():
 	if(_wave_cells.size() <= 0):
 		return
 		
-	_wave_cells.sort_custom(_cell_sort)
-	var cell = _wave_cells.pop_front()
+	var cell = _find_lowest_entropy()
 	cell.collapse()
 	
 func _cell_sort(a, b):
@@ -83,6 +69,18 @@ func _cell_sort(a, b):
 		return true
 	else:
 		return false
+		
+func _find_lowest_entropy() -> Wave_Cell:
+	
+	var lowest_cell: Wave_Cell = _wave_cells.pick_random()
+	
+	for cell in _wave_cells:
+		if (lowest_cell.possible_tile_nodes.size() > cell.possible_tile_nodes.size()):
+			lowest_cell = cell
+	_wave_cells.erase(lowest_cell)
+	
+	return lowest_cell
+		
 
 func _collapse_random_cell():
 	var random = RandomNumberGenerator.new()

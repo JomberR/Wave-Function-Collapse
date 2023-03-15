@@ -6,5 +6,8 @@
 script = ExtResource("1_x4qc6")
 tile_name = "water"
 weight = 8
+limit = -1
+weight_limit_penalty = 0
 source_id = 3
+atlas_coords = Vector2i(0, 0)
 valid_neighbors = Array[String](["water", "sand"])
