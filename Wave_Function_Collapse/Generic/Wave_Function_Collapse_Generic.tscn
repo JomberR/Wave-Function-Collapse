@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqa0txoerra4d"]
+[gd_scene load_steps=9 format=3 uid="uid://dqa0txoerra4d"]
 
 [ext_resource type="PackedScene" uid="uid://bijg8rjxwbs60" path="res://TileMaps/TileMap_Generic.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Function_Collapse.gd" id="1_rpvpg"]
 [ext_resource type="PackedScene" uid="uid://cmip03wq525y3" path="res://Wave_Function_Collapse/Generic/Wave_Cell_Generic.tscn" id="2_0q6vn"]
+[ext_resource type="Resource" uid="uid://df6p8g4sjhi71" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Forest.tres" id="3_qmhwy"]
+[ext_resource type="Resource" uid="uid://cmp4bkxmqul3i" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Grass.tres" id="4_8lprm"]
+[ext_resource type="Resource" uid="uid://bmykxag264w1q" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Sand.tres" id="5_fwyf1"]
+[ext_resource type="Resource" uid="uid://ce4228dm6apls" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Tree.tres" id="6_guhs5"]
+[ext_resource type="Resource" uid="uid://dwos1erlj8hga" path="res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Water.tres" id="7_b6dq1"]
 
 [node name="Wave_Function_Collapse_Generic" type="Node2D" node_paths=PackedStringArray("tileMap")]
 script = ExtResource("1_rpvpg")
+height = 33
+width = 59
 tileMap = NodePath("TileMap_Generic")
 wave_cell = ExtResource("2_0q6vn")
+possible_tiles_resources = Array[Resource("res://Scripts/Wave_Function_Collapse/Wave_Tile.gd")]([ExtResource("3_qmhwy"), ExtResource("4_8lprm"), ExtResource("5_fwyf1"), ExtResource("6_guhs5"), ExtResource("7_b6dq1")])
 
 [node name="TileMap_Generic" parent="." instance=ExtResource("1")]
 
