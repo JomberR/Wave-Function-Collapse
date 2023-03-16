@@ -8,23 +8,23 @@ class_name Wave_Function_Collapse
 
 @export var tileMap: TileMap
 @export var wave_cell: PackedScene
+@export var possible_tiles_resources: Array[Wave_Tile] = []
 
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
 
-var _wave_cells: Array = [Wave_Cell]
+var _wave_cells: Array[Wave_Cell] = []
 var _delay: float
 var _is_generating: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	_populate_cells(wave_cell)
-#	_collapse_random_cell()
 	_delay = placement_delay
 	
 func generate_map():
 	tileMap.clear()
 	_wave_cells.clear()
+	_reset_tile_count()
 	
 	_populate_cells(wave_cell)
 	_collapse_random_cell()
@@ -43,6 +43,10 @@ func _process(delta):
 			if(_wave_cells.size() <= 0):
 				_is_generating = false
 
+func _reset_tile_count():
+	for tile_resource in possible_tiles_resources:
+		tile_resource.tiles_placed = 0
+
 func _populate_cells(cell):
 	for x in width:
 		for y in height:
@@ -51,7 +55,8 @@ func _populate_cells(cell):
 func _create_cell(location: Vector2i, cell: PackedScene):
 	var node: Wave_Cell = cell.instantiate()
 	node.updated_tiles.connect(_propagate)
-	node.init(location, tileMap)
+	node.placed_tile.connect(_increment_tile_count)
+	node.init(location, tileMap, possible_tiles_resources)
 	_wave_cells.append(node)
 	
 func _collapse_cell():
@@ -98,4 +103,7 @@ func _propagate(superposition, location):
 	for cell in _wave_cells:
 		cell.update_superposition(location, superposition)
 	
-	
+func _increment_tile_count(tile: Wave_Tile):
+	for tile_resource in possible_tiles_resources:
+		if (tile.tile_name == tile_resource.tile_name):
+			tile.tiles_placed += 1

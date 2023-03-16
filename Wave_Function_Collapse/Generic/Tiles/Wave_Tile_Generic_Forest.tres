@@ -6,8 +6,8 @@
 script = ExtResource("1_mcqca")
 tile_name = "forest"
 weight = 7
-limit = -1
-weight_limit_penalty = 0
+limit = 150
+weight_limit_penalty = 6
 source_id = 2
 atlas_coords = Vector2i(0, 0)
 valid_neighbors = Array[String](["forest", "tree"])

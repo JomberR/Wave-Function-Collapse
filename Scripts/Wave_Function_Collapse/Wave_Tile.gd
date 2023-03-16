@@ -13,7 +13,7 @@ var modified_weight: int:
 	get = _get_modified_weight
 
 #A manager should modify/reset/keep track of this value.
-var current_tiles_placed = 0
+var tiles_placed = 0
 
 #To be more clear: the index of the tile in the tilemap. It could be different depending checked which map we're using.
 @export var source_id: int
@@ -24,7 +24,7 @@ var current_tiles_placed = 0
 
 func _get_modified_weight():
 	var modified = 1
-	if(limit == -1 || current_tiles_placed < limit):
+	if(limit == -1 || tiles_placed < limit):
 		return weight
 	else:
 		modified = clampi(weight - weight_limit_penalty, 1, weight)

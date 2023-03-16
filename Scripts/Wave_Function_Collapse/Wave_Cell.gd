@@ -4,18 +4,19 @@ extends Node2D
 class_name Wave_Cell
 
 signal updated_tiles(superposition: Array, location: Vector2i)
-signal placed_tile(tile_name: String)
+signal placed_tile(tile: Wave_Tile)
 
-@export var possible_tiles_resources: Array[Wave_Tile] = []
+var possible_tiles_resources: Array[Wave_Tile] = []
 
 var possible_tile_nodes: Array[Wave_Tile] = []
 
 var location: Vector2i
 var tileMap: TileMap
 	
-func init(vector_init: Vector2i, tileMap_init: TileMap):
+func init(vector_init: Vector2i, tileMap_init: TileMap, possible_tiles_resources_init: Array[Wave_Tile]):
 	location = vector_init
 	tileMap = tileMap_init
+	possible_tiles_resources = possible_tiles_resources_init
 	
 	_populate_tiles()
 	
@@ -64,7 +65,7 @@ func _is_adjacent(foreign_location: Vector2i) -> bool:
 func collapse():
 	if(possible_tile_nodes.size() == 0):
 		print_debug("Oops!")
-		updated_tiles.emit(possible_tile_nodes, location)
+		#updated_tiles.emit(possible_tile_nodes, location)
 		return
 
 	var collapsed_tile: Wave_Tile = _weighted_random_tile()
@@ -86,7 +87,7 @@ func _place_tile(tile: Wave_Tile, layer: int):
 	
 	tileMap.set_cell(layer, location, tile_id, atlas_coords)
 	updated_tiles.emit(possible_tile_nodes, location)
-	placed_tile.emit(tile.tile_name)
+	placed_tile.emit(tile)
 	
 func _weighted_random_tile() -> Wave_Tile:
 	var weight_total = 0
