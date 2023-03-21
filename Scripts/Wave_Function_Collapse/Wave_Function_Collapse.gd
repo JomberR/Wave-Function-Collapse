@@ -13,6 +13,7 @@ class_name Wave_Function_Collapse
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
 
+var _map_size: int
 var _wave_cells: Array[Wave_Cell] = []
 var _delay: float
 var _is_generating: bool = false
@@ -20,11 +21,13 @@ var _is_generating: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_delay = placement_delay
+	_map_size = height * width
 	
 func generate_map():
 	tileMap.clear()
 	_wave_cells.clear()
 	_reset_tile_count()
+	_set_tile_map_size()
 	
 	_populate_cells(wave_cell)
 	_collapse_random_cell()
@@ -46,6 +49,10 @@ func _process(delta):
 func _reset_tile_count():
 	for tile_resource in possible_tiles_resources:
 		tile_resource.tiles_placed = 0
+		
+func _set_tile_map_size():
+	for tile_resource in possible_tiles_resources:
+		tile_resource.map_size = _map_size
 
 func _populate_cells(cell):
 	for x in width:
@@ -85,7 +92,6 @@ func _find_lowest_entropy() -> Wave_Cell:
 	_wave_cells.erase(lowest_cell)
 	
 	return lowest_cell
-		
 
 func _collapse_random_cell():
 	var random = RandomNumberGenerator.new()

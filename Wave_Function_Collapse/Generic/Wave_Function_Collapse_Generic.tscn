@@ -11,8 +11,6 @@
 
 [node name="Wave_Function_Collapse_Generic" type="Node2D" node_paths=PackedStringArray("tileMap")]
 script = ExtResource("1_rpvpg")
-height = 33
-width = 59
 tileMap = NodePath("TileMap_Generic")
 wave_cell = ExtResource("2_0q6vn")
 possible_tiles_resources = Array[Resource("res://Scripts/Wave_Function_Collapse/Wave_Tile.gd")]([ExtResource("3_qmhwy"), ExtResource("4_8lprm"), ExtResource("5_fwyf1"), ExtResource("6_guhs5"), ExtResource("7_b6dq1")])
