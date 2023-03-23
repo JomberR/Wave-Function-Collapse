@@ -1,19 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1vjh40f8nybo"]
+[gd_scene load_steps=4 format=3 uid="uid://b1vjh40f8nybo"]
 
 [ext_resource type="PackedScene" uid="uid://dqa0txoerra4d" path="res://Wave_Function_Collapse/Generic/Wave_Function_Collapse_Generic.tscn" id="1_t4lt5"]
+[ext_resource type="Script" path="res://Scripts/Camera/Free_Cam_Control.gd" id="2_cr1lb"]
 [ext_resource type="PackedScene" uid="uid://cdr7dknvmqpb1" path="res://Wave_Function_Collapse/UI/UI_Wave_Function_Collapse_Generator.tscn" id="2_r50el"]
 
 [node name="Test_Level" type="Node2D"]
 
 [node name="Wave_Function_Collapse_Generic" parent="." instance=ExtResource("1_t4lt5")]
-height = 33
-width = 59
-tiles_to_place = 20
+width = 30
+height = 30
+tiles_to_place = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1897, 1052)
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_cr1lb")
 
 [node name="UI_Wave_Function_Collapse_Generator" parent="." instance=ExtResource("2_r50el")]
 
+[connection signal="change_map_size" from="UI_Wave_Function_Collapse_Generator" to="Wave_Function_Collapse_Generic" method="set_map_size"]
 [connection signal="generate_wave_function" from="UI_Wave_Function_Collapse_Generator" to="Wave_Function_Collapse_Generic" method="generate_map"]
