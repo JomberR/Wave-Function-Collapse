@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_x4qc6")
 tile_name = "water"
+limit = 0.2
 weight = 8
-limit = 300
 weight_limit_penalty = 7
 source_id = 3
 atlas_coords = Vector2i(0, 0)

@@ -3,8 +3,8 @@
 extends Node2D
 class_name Wave_Function_Collapse
 
-@export var height: int = 15
 @export var width: int = 25
+@export var height: int = 15
 
 @export var tileMap: TileMap
 @export var wave_cell: PackedScene
@@ -13,6 +13,7 @@ class_name Wave_Function_Collapse
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
 
+var _map_size: int
 var _wave_cells: Array[Wave_Cell] = []
 var _delay: float
 var _is_generating: bool = false
@@ -20,32 +21,59 @@ var _is_generating: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_delay = placement_delay
+	_map_size = width * height
 	
 func generate_map():
+	_map_size = width * height
+	
 	tileMap.clear()
 	_wave_cells.clear()
 	_reset_tile_count()
+	_set_tile_map_size()
 	
 	_populate_cells(wave_cell)
 	_collapse_random_cell()
 	_is_generating = true
+	
+	#_instant_generate()
+
+func set_map_size(value: int, dimension: String):
+	if (dimension == "x"):
+		width = value
+		
+	if (dimension == "y"):
+		height = value
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(_is_generating):
+		_gradual_generate(delta)
+		
+
+func _gradual_generate(delta):
 	_delay -= delta
 
 	if(_delay <= 0):
 		_delay = placement_delay
-		
+
 		if(_is_generating):
 			for i in tiles_to_place:
 				_collapse_cell()
 			if(_wave_cells.size() <= 0):
-				_is_generating = false
+				_is_generating = false	
+
+func _instant_generate():
+	for i in _wave_cells.size():
+		_collapse_cell()
+	_is_generating = false
 
 func _reset_tile_count():
 	for tile_resource in possible_tiles_resources:
 		tile_resource.tiles_placed = 0
+		
+func _set_tile_map_size():
+	for tile_resource in possible_tiles_resources:
+		tile_resource.map_size = _map_size
 
 func _populate_cells(cell):
 	for x in width:
@@ -85,7 +113,6 @@ func _find_lowest_entropy() -> Wave_Cell:
 	_wave_cells.erase(lowest_cell)
 	
 	return lowest_cell
-		
 
 func _collapse_random_cell():
 	var random = RandomNumberGenerator.new()

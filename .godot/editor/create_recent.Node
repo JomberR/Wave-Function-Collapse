@@ -1,5 +1,12 @@
-MarginContainer
+HBoxContainer
+Panel
+SpinBox
+LineEdit
+Label
+RichTextLabel
+TextEdit
 Button
+MarginContainer
 Control
 CanvasLayer
 Camera2D
