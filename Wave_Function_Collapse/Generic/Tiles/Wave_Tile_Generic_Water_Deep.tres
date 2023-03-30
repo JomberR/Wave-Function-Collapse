@@ -6,7 +6,7 @@
 script = ExtResource("1_kepl6")
 tile_name = "deep water"
 limit = 0.06
-weight = 6
+weight = 7
 weight_limit_penalty = 5
 source_id = 0
 atlas_coords = Vector2i(1, 1)
