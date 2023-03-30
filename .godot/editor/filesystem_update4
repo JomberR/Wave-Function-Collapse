@@ -1,10 +1,12 @@
-res://Levels/Test_Level.tscn
+res://Wave_Function_Collapse/UI/UI_Wave_Function_Collapse_Generator.tscn
 res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Grass.tres
 res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Tree.tres
 res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Forest.tres
 res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Sand.tres
 res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Water.tres
-res://Wave_Function_Collapse/UI/UI_Wave_Function_Collapse_Generator.tscn
+res://Wave_Function_Collapse/Generic/Tiles/Wave_Tile_Generic_Water_Deep.tres
+res://Levels/Test_Level.tscn
 res://Wave_Function_Collapse/Generic/Wave_Function_Collapse_Generic.tscn
-res://TileMaps/TileMap_Generic.tscn
-res://Scripts/Wave_Function_Collapse/Wave_Function_Collapse.gd
+res://TileMaps/TileMap_Generic_V2.tscn
+res://Wave_Function_Collapse/Wave_Cell.tscn
+res://Scripts/Wave_Function_Collapse/UI/UI_WFC_Gen.gd

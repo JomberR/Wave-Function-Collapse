@@ -8,15 +8,15 @@ script = ExtResource("1_lh52v")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="MarginContainer_Generate" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -120.0
+offset_top = -80.0
 offset_right = 384.0
 grow_vertical = 0
 
@@ -48,9 +48,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -56.0
-offset_right = 320.0
+offset_left = -165.0
+offset_top = -31.0
+offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50
@@ -65,14 +65,17 @@ size_flags_vertical = 1
 text = "Width:"
 vertical_alignment = 1
 
-[node name="SpinBox_Width" type="SpinBox" parent="Control/HBoxContainer_Size/HBoxContainer_Width"]
+[node name="HSlider_Width" type="HSlider" parent="Control/HBoxContainer_Size/HBoxContainer_Width"]
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 1.0
-max_value = 60.0
+size_flags_vertical = 4
+min_value = 20.0
 value = 30.0
-rounded = true
-update_on_text_changed = true
+scrollable = false
+
+[node name="Label_Value_Width" type="Label" parent="Control/HBoxContainer_Size/HBoxContainer_Width"]
+layout_mode = 2
+text = "30"
 
 [node name="HBoxContainer_Height" type="HBoxContainer" parent="Control/HBoxContainer_Size"]
 layout_mode = 2
@@ -84,16 +87,19 @@ size_flags_vertical = 1
 text = "Height:"
 vertical_alignment = 1
 
-[node name="SpinBox_Height" type="SpinBox" parent="Control/HBoxContainer_Size/HBoxContainer_Height"]
+[node name="HSlider_Height" type="HSlider" parent="Control/HBoxContainer_Size/HBoxContainer_Height"]
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 1.0
-max_value = 60.0
-value = 30.0
-rounded = true
-update_on_text_changed = true
+size_flags_vertical = 4
+min_value = 20.0
+value = 20.0
+scrollable = false
+
+[node name="Label_Value_Height" type="Label" parent="Control/HBoxContainer_Size/HBoxContainer_Height"]
+layout_mode = 2
+text = "20"
 
 [connection signal="pressed" from="Control/MarginContainer_Generate/Button_Generate" to="." method="_on_generate_pressed"]
 [connection signal="pressed" from="Control/MarginContainer_Exit/Button_Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="Control/HBoxContainer_Size/HBoxContainer_Width/SpinBox_Width" to="." method="_on_width_value_changed"]
-[connection signal="value_changed" from="Control/HBoxContainer_Size/HBoxContainer_Height/SpinBox_Height" to="." method="_on_height_value_changed"]
+[connection signal="value_changed" from="Control/HBoxContainer_Size/HBoxContainer_Width/HSlider_Width" to="." method="_on_width_value_changed"]
+[connection signal="value_changed" from="Control/HBoxContainer_Size/HBoxContainer_Height/HSlider_Height" to="." method="_on_height_value_changed"]

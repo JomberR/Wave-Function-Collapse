@@ -8,11 +8,11 @@
 
 [node name="Wave_Function_Collapse_Generic" parent="." instance=ExtResource("1_t4lt5")]
 width = 30
-height = 30
+height = 20
 tiles_to_place = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1897, 1052)
+position = Vector2(1274, 715)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_cr1lb")
 

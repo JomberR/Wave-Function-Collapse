@@ -14,7 +14,7 @@ class_name Wave_Function_Collapse
 @export var tiles_to_place: int = 1
 
 var _map_size: int
-var _wave_cells: Array[Wave_Cell] = []
+var _wave_cells: Dictionary
 var _delay: float
 var _is_generating: bool = false
 
@@ -44,7 +44,6 @@ func set_map_size(value: int, dimension: String):
 	if (dimension == "y"):
 		height = value
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(_is_generating):
 		_gradual_generate(delta)
@@ -85,7 +84,10 @@ func _create_cell(location: Vector2i, cell: PackedScene):
 	node.updated_tiles.connect(_propagate)
 	node.placed_tile.connect(_increment_tile_count)
 	node.init(location, tileMap, possible_tiles_resources)
-	_wave_cells.append(node)
+	
+	#We're formatting it like this because this is what a vector2int looks like when casted to a string.
+	var key_value = "(" + str(location.x) + ", " + str(location.y) + ")"
+	_wave_cells[key_value] = node
 	
 func _collapse_cell():
 	if(_wave_cells.size() <= 0):
@@ -105,12 +107,18 @@ func _cell_sort(a, b):
 		
 func _find_lowest_entropy() -> Wave_Cell:
 	
-	var lowest_cell: Wave_Cell = _wave_cells.pick_random()
+	var random = RandomNumberGenerator.new()
+	random.randomize()
 	
-	for cell in _wave_cells:
+	var rand_int = random.randi_range(0, _wave_cells.size() - 1)
+	
+	var lowest_cell: Wave_Cell = _wave_cells.values()[rand_int]
+	
+	for cell in _wave_cells.values():
 		if (lowest_cell.possible_tile_nodes.size() > cell.possible_tile_nodes.size()):
 			lowest_cell = cell
-	_wave_cells.erase(lowest_cell)
+	
+	_wave_cells.erase(_wave_cells.find_key(lowest_cell))
 	
 	return lowest_cell
 
@@ -123,12 +131,31 @@ func _collapse_random_cell():
 	
 	var rand_int = random.randi_range(0, _wave_cells.size() - 1)
 	
-	_wave_cells[rand_int].collapse()
-	_wave_cells.remove_at(rand_int)
+	_wave_cells.values()[rand_int].collapse()
+	_wave_cells.erase(_wave_cells.keys()[rand_int])
 
 func _propagate(superposition, location):
-	for cell in _wave_cells:
-		cell.update_superposition(location, superposition)
+	#Remember a POSITIVE y value is DOWN
+	#var north_west = str(location + Vector2i(-1, -1))
+	var north = str(location + Vector2i(0, -1))
+	#var north_east = str(location + Vector2i(1, -1))
+	var east = str(location + Vector2i(1, 0))
+	#var south_east = str(location + Vector2i(1, 1))
+	var south = str(location + Vector2i(0, 1))
+	#var south_west = str(location + Vector2i(-1, 1))
+	var west = str(location + Vector2i(-1, 0))
+	
+	if(_wave_cells.has(north)):
+		_wave_cells.get(north).update_superposition(superposition)
+		
+	if(_wave_cells.has(east)):
+		_wave_cells.get(east).update_superposition(superposition)
+		
+	if(_wave_cells.has(south)):
+		_wave_cells.get(south).update_superposition(superposition)
+		
+	if(_wave_cells.has(west)):
+		_wave_cells.get(west).update_superposition(superposition)
 	
 func _increment_tile_count(tile: Wave_Tile):
 	for tile_resource in possible_tiles_resources:

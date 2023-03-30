@@ -1,8 +1,10 @@
+Label
+HSlider
+TileMap
 HBoxContainer
 Panel
 SpinBox
 LineEdit
-Label
 RichTextLabel
 TextEdit
 Button
