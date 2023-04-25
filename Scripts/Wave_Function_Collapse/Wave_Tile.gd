@@ -22,11 +22,42 @@ var map_size: int
 @export var source_id: int
 @export var atlas_coords: Vector2i = Vector2i(0,0)
 
-#We can neighbor these tiles! Any other tiles are invalid.
-@export var valid_neighbors: Array[String] = []
+#We can neighbor tiles in specific directions. If it's not there, it's invalid.
+@export var valid_neighbors_northwest: Array[String] = []
+@export var valid_neighbors_north: Array[String] = []
+@export var valid_neighbors_northeast: Array[String] = []
+@export var valid_neighbors_east: Array[String] = []
+@export var valid_neighbors_southeast: Array[String] = []
+@export var valid_neighbors_south: Array[String] = []
+@export var valid_neighbors_southwest: Array[String] = []
+@export var valid_neighbors_west: Array[String] = []
 
 #We can only be placed next to valid neighbors.
-func is_valid(tile_list: Array) -> bool:
+#CHANGE: we need a second argument that tells us whether or not we're north/south/east/west etc.
+func is_valid(tile_list: Array, direction: String) -> bool:
+	var valid = false
+	match direction:
+		"northwest":
+			valid = _check_neighbors(tile_list, valid_neighbors_northwest)
+		"north":
+			valid = _check_neighbors(tile_list, valid_neighbors_north)
+		"northeast":
+			valid = _check_neighbors(tile_list, valid_neighbors_northeast)
+		"east":
+			valid = _check_neighbors(tile_list, valid_neighbors_east)
+		"southeast":
+			valid = _check_neighbors(tile_list, valid_neighbors_southeast)
+		"south":
+			valid = _check_neighbors(tile_list, valid_neighbors_south)
+		"southwest":
+			valid = _check_neighbors(tile_list, valid_neighbors_southwest)
+		"west":
+			valid = _check_neighbors(tile_list, valid_neighbors_west)
+			
+	return valid
+			
+func _check_neighbors(tile_list: Array, valid_neighbors: Array):
+	#Tile_list is the list of possible tiles in our neighbor.
 	for valid_neighbor in valid_neighbors:
 		for tile in tile_list:
 			if(valid_neighbor == tile.tile_name):
