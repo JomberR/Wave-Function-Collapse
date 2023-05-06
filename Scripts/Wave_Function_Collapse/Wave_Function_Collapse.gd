@@ -7,7 +7,7 @@ class_name Wave_Function_Collapse
 @export var height: int = 15
 
 @export var tileMap: TileMap
-@export var wave_cell: PackedScene
+var wave_cell: PackedScene = preload("res://Wave_Function_Collapse/Wave_Cell.tscn")
 @export var possible_tiles_resources: Array[Wave_Tile] = []
 
 @export var placement_delay: float = .01
@@ -90,10 +90,9 @@ func _collapse_cell():
 		return
 	var cell = _find_lowest_entropy()
 	
+	cell.collapse()
 	#Remove the cell from the list so we don't call it again.
 	_wave_cells.erase(_wave_cells.find_key(cell))
-	
-	cell.collapse()
 	
 func _cell_sort(a, b):
 	var entropy_a = a.possible_tile_nodes.size()
@@ -179,7 +178,7 @@ func _executePropagationQueue():
 		
 func _processPropagations():
 	while _propagationQueue.size() > 0:
-		await _executePropagationQueue()
+		_executePropagationQueue()
 	
 func _increment_tile_count(tile: Wave_Tile):
 	for tile_resource in possible_tiles_resources:

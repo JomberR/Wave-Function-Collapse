@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://b22pjs8snvpod"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_nuwyo"]
+
+[resource]
+script = ExtResource("1_nuwyo")
+tile_name = "grass"
+limit = 0.4
+weight = 200
+weight_limit_penalty = 150
+source_id = 0
+atlas_coords = Vector2i(5, 2)
+socket_TL = "grass"
+socket_TM = "grass"
+socket_TR = "grass"
+socket_BL = "grass"
+socket_BM = "grass"
+socket_BR = "grass"
+socket_RT = "grass"
+socket_RM = "grass"
+socket_RB = "grass"
+socket_LT = "grass"
+socket_LM = "grass"
+socket_LB = "grass"
+socket_CTL = "grass"
+socket_CTR = "grass"
+socket_CBL = "grass"
+socket_CBR = "grass"

@@ -22,47 +22,77 @@ var map_size: int
 @export var source_id: int
 @export var atlas_coords: Vector2i = Vector2i(0,0)
 
-#We can neighbor tiles in specific directions. If it's not there, it's invalid.
-@export var valid_neighbors_northwest: Array[String] = []
-@export var valid_neighbors_north: Array[String] = []
-@export var valid_neighbors_northeast: Array[String] = []
-@export var valid_neighbors_east: Array[String] = []
-@export var valid_neighbors_southeast: Array[String] = []
-@export var valid_neighbors_south: Array[String] = []
-@export var valid_neighbors_southwest: Array[String] = []
-@export var valid_neighbors_west: Array[String] = []
+#Our sockets.
+#T: Top, B: Bottom, L: Left, R: Right, M: Middle, C: Corner
+#Refer to documentation for more info.
+#Top
+@export var socket_TL: String
+@export var socket_TM: String
+@export var socket_TR: String
+
+#Bottom
+@export var socket_BL: String
+@export var socket_BM: String
+@export var socket_BR: String
+
+#Right
+@export var socket_RT: String
+@export var socket_RM: String
+@export var socket_RB: String
+
+#Left
+@export var socket_LT: String
+@export var socket_LM: String
+@export var socket_LB: String
+
+#Corners
+@export var socket_CTL: String
+@export var socket_CTR: String
+@export var socket_CBL: String
+@export var socket_CBR: String
+
 
 #We can only be placed next to valid neighbors.
-#CHANGE: we need a second argument that tells us whether or not we're north/south/east/west etc.
 func is_valid(tile_list: Array, direction: String) -> bool:
 	var valid = false
-	match direction:
-		"northwest":
-			valid = _check_neighbors(tile_list, valid_neighbors_northwest)
-		"north":
-			valid = _check_neighbors(tile_list, valid_neighbors_north)
-		"northeast":
-			valid = _check_neighbors(tile_list, valid_neighbors_northeast)
-		"east":
-			valid = _check_neighbors(tile_list, valid_neighbors_east)
-		"southeast":
-			valid = _check_neighbors(tile_list, valid_neighbors_southeast)
-		"south":
-			valid = _check_neighbors(tile_list, valid_neighbors_south)
-		"southwest":
-			valid = _check_neighbors(tile_list, valid_neighbors_southwest)
-		"west":
-			valid = _check_neighbors(tile_list, valid_neighbors_west)
-			
+	for tile in tile_list:
+
+		#The direction is our location FROM the tile that was updated.
+		#i.e. northwest means we're northwest of the tile that we're comparing against.
+		match direction:
+			"northwest":
+				if(socket_CBR == tile.socket_CTL):
+					valid = true
+			"north":
+				if(socket_BL == tile.socket_TL && 
+				socket_BM == tile.socket_TM && 
+				socket_BR == tile.socket_TR):
+					valid = true
+			"northeast":
+				if(socket_CBL == tile.socket_CTR):
+					valid = true
+			"east":
+				if(socket_LT == tile.socket_RT && 
+				socket_LM == tile.socket_RM && 
+				socket_LB == tile.socket_RB):
+					valid = true
+			"southeast":
+				if(socket_CTL == tile.socket_CBR):
+					valid = true
+			"south":
+				if(socket_TL == tile.socket_BL && 
+				socket_TM == tile.socket_BM && 
+				socket_TR == tile.socket_BR):
+					valid = true
+			"southwest":
+				if(socket_CTR == tile.socket_CBL):
+					valid = true
+			"west":
+				if(socket_RT == tile.socket_LT && 
+				socket_RM == tile.socket_LM && 
+				socket_RB == tile.socket_LB):
+					valid = true
 	return valid
-			
-func _check_neighbors(tile_list: Array, valid_neighbors: Array):
-	#Tile_list is the list of possible tiles in our neighbor.
-	for valid_neighbor in valid_neighbors:
-		for tile in tile_list:
-			if(valid_neighbor == tile.tile_name):
-				return true
-	return false
 	
 func _get_modified_weight():
 	var modified = 1
@@ -70,13 +100,8 @@ func _get_modified_weight():
 	var calculated_limit: int
 	calculated_limit = int(round(map_size * limit))
 	
-#	print(str(tile_name) + ": Limit " + str(calculated_limit))
-#	print(str(tile_name) + ": Total " + str(tiles_placed))
-	
 	if(limit == -1 || tiles_placed < calculated_limit):
-#		print(str(tile_name) + ": Weight " + str(weight))
 		return weight
 	else:
 		modified = clampi(weight - weight_limit_penalty, 1, weight)
-#		print(str(tile_name) + ": Weight " + str(modified))
 		return modified
