@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://cnjod4jv6win3"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_7bwqm"]
+
+[resource]
+script = ExtResource("1_7bwqm")
+tile_name = "forest_se"
+limit = -1.0
+weight = 10
+weight_limit_penalty = 0
+source_id = 0
+atlas_coords = Vector2i(9, 3)
+socket_TL = "forest"
+socket_TM = "grass"
+socket_TR = "grass"
+socket_BL = "grass"
+socket_BM = "grass"
+socket_BR = "grass"
+socket_RT = "grass"
+socket_RM = "grass"
+socket_RB = "grass"
+socket_LT = "forest"
+socket_LM = "forest"
+socket_LB = "grass"
+socket_CTL = "forest"
+socket_CTR = "grass"
+socket_CBL = "grass"
+socket_CBR = "grass"

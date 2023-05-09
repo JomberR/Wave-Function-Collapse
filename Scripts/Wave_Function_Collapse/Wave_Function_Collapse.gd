@@ -7,8 +7,12 @@ class_name Wave_Function_Collapse
 @export var height: int = 15
 
 @export var tileMap: TileMap
+
 var wave_cell: PackedScene = preload("res://Wave_Function_Collapse/Wave_Cell.tscn")
-@export var possible_tiles_resources: Array[Wave_Tile] = []
+
+#A collection just holds wave_tiles. This is done for organizational purposes.
+@export var wave_tile_collections: Array[Wave_Tile_Collection] = []
+var possible_tiles_resources: Array[Wave_Tile] = []
 
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
@@ -21,6 +25,9 @@ var _propagationQueue: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for collection in wave_tile_collections:
+		possible_tiles_resources.append_array(collection.wave_tiles)
+	
 	_delay = placement_delay
 	_map_size = width * height
 	
