@@ -7,8 +7,12 @@ class_name Wave_Function_Collapse
 @export var height: int = 15
 
 @export var tileMap: TileMap
-@export var wave_cell: PackedScene
-@export var possible_tiles_resources: Array[Wave_Tile] = []
+
+var wave_cell: PackedScene = preload("res://Wave_Function_Collapse/Wave_Cell.tscn")
+
+#A collection just holds wave_tiles. This is done for organizational purposes.
+@export var wave_tile_collections: Array[Wave_Tile_Collection] = []
+var possible_tiles_resources: Array[Wave_Tile] = []
 
 @export var placement_delay: float = .01
 @export var tiles_to_place: int = 1
@@ -21,6 +25,9 @@ var _propagationQueue: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for collection in wave_tile_collections:
+		possible_tiles_resources.append_array(collection.wave_tiles)
+	
 	_delay = placement_delay
 	_map_size = width * height
 	
@@ -90,10 +97,9 @@ func _collapse_cell():
 		return
 	var cell = _find_lowest_entropy()
 	
+	cell.collapse()
 	#Remove the cell from the list so we don't call it again.
 	_wave_cells.erase(_wave_cells.find_key(cell))
-	
-	cell.collapse()
 	
 func _cell_sort(a, b):
 	var entropy_a = a.possible_tile_nodes.size()
@@ -179,7 +185,7 @@ func _executePropagationQueue():
 		
 func _processPropagations():
 	while _propagationQueue.size() > 0:
-		await _executePropagationQueue()
+		_executePropagationQueue()
 	
 func _increment_tile_count(tile: Wave_Tile):
 	for tile_resource in possible_tiles_resources:

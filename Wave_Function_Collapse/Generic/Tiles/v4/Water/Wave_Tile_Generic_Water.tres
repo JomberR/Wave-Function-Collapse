@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://bvite4jinp61u"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_7mkdf"]
+
+[resource]
+script = ExtResource("1_7mkdf")
+tile_name = "water"
+limit = 0.05
+weight = 250
+weight_limit_penalty = 230
+source_id = 0
+atlas_coords = Vector2i(2, 2)
+socket_TL = "water"
+socket_TM = "water"
+socket_TR = "water"
+socket_BL = "water"
+socket_BM = "water"
+socket_BR = "water"
+socket_RT = "water"
+socket_RM = "water"
+socket_RB = "water"
+socket_LT = "water"
+socket_LM = "water"
+socket_LB = "water"
+socket_CTL = "water"
+socket_CTR = "water"
+socket_CBL = "water"
+socket_CBR = "water"

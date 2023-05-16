@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://dmgluedto3uto"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_rfg34"]
+
+[resource]
+script = ExtResource("1_rfg34")
+tile_name = "forest"
+limit = 0.1
+weight = 300
+weight_limit_penalty = 290
+source_id = 0
+atlas_coords = Vector2i(8, 2)
+socket_TL = "forest"
+socket_TM = "forest"
+socket_TR = "forest"
+socket_BL = "forest"
+socket_BM = "forest"
+socket_BR = "forest"
+socket_RT = "forest"
+socket_RM = "forest"
+socket_RB = "forest"
+socket_LT = "forest"
+socket_LM = "forest"
+socket_LB = "forest"
+socket_CTL = "forest"
+socket_CTR = "forest"
+socket_CBL = "forest"
+socket_CBR = "forest"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://dvf8ddjvv4488"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_y6pu4"]
+
+[resource]
+script = ExtResource("1_y6pu4")
+tile_name = "forest_se_inverted"
+limit = 0.0
+weight = 10
+weight_limit_penalty = 0
+source_id = 0
+atlas_coords = Vector2i(10, 4)
+socket_TL = "grass"
+socket_TM = "treeline"
+socket_TR = "forest"
+socket_BL = "forest"
+socket_BM = "forest"
+socket_BR = "forest"
+socket_RT = "forest"
+socket_RM = "forest"
+socket_RB = "forest"
+socket_LT = "grass"
+socket_LM = "treeline"
+socket_LB = "forest"
+socket_CTL = "grass"
+socket_CTR = "forest"
+socket_CBL = "forest"
+socket_CBR = "forest"

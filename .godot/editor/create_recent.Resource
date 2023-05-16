@@ -1,2 +1,5 @@
+Wave_Tile_Collection
 Wave_Tile
+Resource
+TileSet
 Wave_Cell

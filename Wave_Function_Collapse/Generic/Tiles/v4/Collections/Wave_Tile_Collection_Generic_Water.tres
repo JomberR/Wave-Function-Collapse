@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Wave_Tile_Collection" load_steps=15 format=3 uid="uid://bw18q36hk7gav"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile_Collection.gd" id="1_tk115"]
+[ext_resource type="Resource" uid="uid://lvnafegvi3w5" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_E.tres" id="2_o52ps"]
+[ext_resource type="Resource" uid="uid://b4wrmdc37kgn2" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_N.tres" id="3_fjf1y"]
+[ext_resource type="Resource" uid="uid://bqqytfwmd77mk" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_NE.tres" id="4_fyc8m"]
+[ext_resource type="Resource" uid="uid://b3maohfpqqa07" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_NE_Inverted.tres" id="5_ctawy"]
+[ext_resource type="Resource" uid="uid://4oh1ngb4qpre" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_NW.tres" id="6_w8eqk"]
+[ext_resource type="Resource" uid="uid://00f7u5u8is3d" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_NW_Inverted.tres" id="7_hlafi"]
+[ext_resource type="Resource" uid="uid://yb38ab0671v3" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_S.tres" id="8_ynfji"]
+[ext_resource type="Resource" uid="uid://qlnw2jmmejbf" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_SE.tres" id="9_271gk"]
+[ext_resource type="Resource" uid="uid://bxgaf0urnm3ed" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_SE_Inverted.tres" id="10_utwcq"]
+[ext_resource type="Resource" uid="uid://dykjyeojlcr07" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_SW.tres" id="11_w13vv"]
+[ext_resource type="Resource" uid="uid://cjv7g2h3twyxu" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_SW_Inverted.tres" id="12_4e5so"]
+[ext_resource type="Resource" uid="uid://c8q3o3vll7mjd" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Shore_W.tres" id="13_y8l6f"]
+[ext_resource type="Resource" uid="uid://bvite4jinp61u" path="res://Wave_Function_Collapse/Generic/Tiles/v4/Water/Wave_Tile_Generic_Water.tres" id="14_vhi1g"]
+
+[resource]
+script = ExtResource("1_tk115")
+wave_tiles = Array[Resource("res://Scripts/Wave_Function_Collapse/Wave_Tile.gd")]([ExtResource("2_o52ps"), ExtResource("3_fjf1y"), ExtResource("4_fyc8m"), ExtResource("5_ctawy"), ExtResource("6_w8eqk"), ExtResource("7_hlafi"), ExtResource("8_ynfji"), ExtResource("9_271gk"), ExtResource("10_utwcq"), ExtResource("11_w13vv"), ExtResource("12_4e5so"), ExtResource("13_y8l6f"), ExtResource("14_vhi1g")])
+weight_modifier = 100
+limit_modifier = 0.025
+weight_limit_penalty_modifier = 99

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Wave_Tile" load_steps=2 format=3 uid="uid://c8q3o3vll7mjd"]
+
+[ext_resource type="Script" path="res://Scripts/Wave_Function_Collapse/Wave_Tile.gd" id="1_6whrs"]
+
+[resource]
+script = ExtResource("1_6whrs")
+tile_name = "shore_w"
+limit = 0.0
+weight = 10
+weight_limit_penalty = 0
+source_id = 0
+atlas_coords = Vector2i(1, 2)
+socket_TL = "grass"
+socket_TM = "shore"
+socket_TR = "water"
+socket_BL = "grass"
+socket_BM = "shore"
+socket_BR = "water"
+socket_RT = "water"
+socket_RM = "water"
+socket_RB = "water"
+socket_LT = "grass"
+socket_LM = "grass"
+socket_LB = "grass"
+socket_CTL = "grass"
+socket_CTR = "water"
+socket_CBL = "grass"
+socket_CBR = "water"
