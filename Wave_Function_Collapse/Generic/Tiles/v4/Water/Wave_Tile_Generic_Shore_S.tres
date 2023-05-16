@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vhmsn")
 tile_name = "shore_s"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0

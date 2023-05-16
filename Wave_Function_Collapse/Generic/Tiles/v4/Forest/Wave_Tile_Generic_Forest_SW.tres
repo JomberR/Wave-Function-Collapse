@@ -5,19 +5,19 @@
 [resource]
 script = ExtResource("1_0wgat")
 tile_name = "forest_sw"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0
 atlas_coords = Vector2i(7, 3)
 socket_TL = "grass"
-socket_TM = "grass"
+socket_TM = "treeline"
 socket_TR = "forest"
 socket_BL = "grass"
 socket_BM = "grass"
 socket_BR = "grass"
 socket_RT = "forest"
-socket_RM = "forest"
+socket_RM = "treeline"
 socket_RB = "grass"
 socket_LT = "grass"
 socket_LM = "grass"

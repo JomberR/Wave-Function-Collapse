@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vmqet")
 tile_name = "forest_nw_inverted"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0
@@ -14,10 +14,10 @@ socket_TL = "forest"
 socket_TM = "forest"
 socket_TR = "forest"
 socket_BL = "forest"
-socket_BM = "grass"
+socket_BM = "treeline"
 socket_BR = "grass"
 socket_RT = "forest"
-socket_RM = "grass"
+socket_RM = "treeline"
 socket_RB = "grass"
 socket_LT = "forest"
 socket_LM = "forest"

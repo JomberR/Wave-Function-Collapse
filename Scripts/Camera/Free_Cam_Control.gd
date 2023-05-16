@@ -20,13 +20,13 @@ func _movement(delta):
 	var x = 0
 	var y = 0
 	
-	if (Input.is_action_pressed("ui_up")):
+	if (Input.is_action_pressed("move_up")):
 		y -= 1
-	if (Input.is_action_pressed("ui_down")):
+	if (Input.is_action_pressed("move_down")):
 		y += 1
-	if (Input.is_action_pressed("ui_left")):
+	if (Input.is_action_pressed("move_left")):
 		x -= 1
-	if (Input.is_action_pressed("ui_right")):
+	if (Input.is_action_pressed("move_right")):
 		x += 1
 		
 	var velocity = Vector2(x, y) * move_speed * delta

@@ -18,3 +18,6 @@
 [resource]
 script = ExtResource("1_yonr3")
 wave_tiles = Array[Resource("res://Scripts/Wave_Function_Collapse/Wave_Tile.gd")]([ExtResource("2_po0ee"), ExtResource("3_w2c7s"), ExtResource("4_gftvc"), ExtResource("5_yywpg"), ExtResource("6_d4rm3"), ExtResource("7_oc2xi"), ExtResource("8_lerev"), ExtResource("9_vf7lx"), ExtResource("10_k3sou"), ExtResource("11_g5mw7"), ExtResource("12_4iuu1"), ExtResource("13_4ofxl"), ExtResource("14_opn1n")])
+weight_modifier = 100
+limit_modifier = 0.025
+weight_limit_penalty_modifier = 95

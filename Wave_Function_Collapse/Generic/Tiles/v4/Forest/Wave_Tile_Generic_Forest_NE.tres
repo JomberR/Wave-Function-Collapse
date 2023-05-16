@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_hm7hg")
 tile_name = "forest_ne"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0
@@ -14,13 +14,13 @@ socket_TL = "grass"
 socket_TM = "grass"
 socket_TR = "grass"
 socket_BL = "forest"
-socket_BM = "grass"
+socket_BM = "treeline"
 socket_BR = "grass"
 socket_RT = "grass"
 socket_RM = "grass"
 socket_RB = "grass"
 socket_LT = "grass"
-socket_LM = "forest"
+socket_LM = "treeline"
 socket_LB = "forest"
 socket_CTL = "grass"
 socket_CTR = "grass"

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_1exgf")
 tile_name = "shore_e"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0

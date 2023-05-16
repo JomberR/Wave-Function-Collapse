@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_opslb")
 tile_name = "forest_s"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0
@@ -17,10 +17,10 @@ socket_BL = "grass"
 socket_BM = "grass"
 socket_BR = "grass"
 socket_RT = "forest"
-socket_RM = "forest"
+socket_RM = "treeline"
 socket_RB = "grass"
 socket_LT = "forest"
-socket_LM = "forest"
+socket_LM = "treeline"
 socket_LB = "grass"
 socket_CTL = "forest"
 socket_CTR = "forest"

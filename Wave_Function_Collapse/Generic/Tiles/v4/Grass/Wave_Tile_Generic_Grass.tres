@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_nuwyo")
 tile_name = "grass"
-limit = 0.4
-weight = 200
-weight_limit_penalty = 150
+limit = 0.1
+weight = 100
+weight_limit_penalty = 90
 source_id = 0
 atlas_coords = Vector2i(5, 2)
 socket_TL = "grass"

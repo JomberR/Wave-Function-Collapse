@@ -4,10 +4,15 @@ class_name Wave_Tile
 @export var tile_name: String
 
 #This should be a percentage
-@export var limit: float = -1
+@export var limit: float = 0
 
 @export var weight: int = 10
 @export var weight_limit_penalty: int = 0
+
+#This gets modified by the collection we're in.
+var weight_modifier: int = 0
+var limit_modifier: float = 0
+var weight_limit_penalty_modifier: int = 0
 
 #Our weight that we want to use for calculations may be different from our starting weight.
 	#For example, if we want to reduce the weight if we have over a certain amount of tiles.
@@ -98,10 +103,11 @@ func _get_modified_weight():
 	var modified = 1
 	
 	var calculated_limit: int
-	calculated_limit = int(round(map_size * limit))
+	calculated_limit = int(round(map_size * (limit + limit_modifier)))
 	
-	if(limit == -1 || tiles_placed < calculated_limit):
-		return weight
+	if((limit + limit_modifier == 0) || tiles_placed < calculated_limit):
+		return (weight + weight_modifier)
 	else:
-		modified = clampi(weight - weight_limit_penalty, 1, weight)
+		modified = clampi((weight + weight_modifier) \
+		- (weight_limit_penalty + weight_limit_penalty_modifier), 1, weight)
 		return modified

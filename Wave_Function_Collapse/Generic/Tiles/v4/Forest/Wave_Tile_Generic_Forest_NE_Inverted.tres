@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_pb6ch")
 tile_name = "forest_ne_inverted"
-limit = -1.0
+limit = 0.0
 weight = 10
 weight_limit_penalty = 0
 source_id = 0
@@ -14,13 +14,13 @@ socket_TL = "forest"
 socket_TM = "forest"
 socket_TR = "forest"
 socket_BL = "grass"
-socket_BM = "grass"
+socket_BM = "treeline"
 socket_BR = "forest"
 socket_RT = "forest"
 socket_RM = "forest"
 socket_RB = "forest"
 socket_LT = "forest"
-socket_LM = "grass"
+socket_LM = "treeline"
 socket_LB = "grass"
 socket_CTL = "forest"
 socket_CTR = "forest"
